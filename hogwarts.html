@@ -19,10 +19,10 @@
       <section id="mainDisplay"class="directionRow">
         <section id="houses">
           <div id="searchField"><input type="search" id="search" name="search" /><img src="assets/icons/search.svg"></div>
-          <h3 class="Gryffindor houseNumber"><span>12</span> Gryffindor</h3>
-          <h3 class="Hufflepuff houseNumber"><span>12</span> Hufflepuff</h3>
-          <h3 class="Ravenclaff houseNumber"><span>12</span> Ravenclaff</h3>
-          <h3 class="Slytherin houseNumber"><span>12</span> Slytherin</h3>
+          <h3 class="gryffindor houseNumber"><span>12</span> Gryffindor</h3>
+          <h3 class="hufflepuff houseNumber"><span>12</span> Hufflepuff</h3>
+          <h3 class="ravenclaff houseNumber"><span>12</span> Ravenclaff</h3>
+          <h3 class="slytherin houseNumber"><span>12</span> Slytherin</h3>
         </section>
         <section id="list">
           <div id="buttons" class="directionRow">
@@ -30,19 +30,19 @@
            <div id="sortContainer" class=" buttonContainer directionRow"><img class="buttonIcon" src="assets/icons/sort.svg" alt=""><button id="sort">Sort</button></div>
             <p><span>25</span>Results found</p>
           </div>
-          <ul>
-          <div class="studentCard directionRow GryffindorBorder">
-            <img class="studentImgCard " src="assets/images/abbott_h.png" alt="" />
+          <ul><template id="studentCardTemplate">
+          <div class="studentCard directionRow ">
+            <img class="studentImgCard " src="" alt="" />
             <div>
               <h3 class="name">Name</h3>
               <h3 class="lastName">Last name</h3>
             </div>
             <div class="houseNameAndImg">
               <h3 class="house-name">Gryffindor</h3>
-              <img class="houseImgCard" src="assets/houses/gryffindor.png" alt="" />
+              <img class="houseImgCard" src="" alt="" />
             </div>
-          </div>
-          <div class="studentCard directionRow HufflepuffBorder">
+          </div></template>
+          <!-- <div class="studentCard directionRow HufflepuffBorder">
             <img class="studentImgCard" src="assets/images/abbott_h.png" alt="" />
             <div>
               <h3 class="name">Name</h3>
@@ -72,7 +72,7 @@
               <h3 class="house-name">Gryffindor</h3>
               <img class="houseImgCard" src="assets/houses/gryffindor.png" alt="" />
             </div>
-          </div>
+          </div> -->
         </ul></section>
           <section id="popUp">
             <article class="hidden">

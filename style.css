@@ -37,40 +37,40 @@ header {
   flex-direction: row;
   flex-wrap: wrap;
 }
-.Slytherin {
+.slytherin {
   color: #065c31;
 }
-.Gryffindor {
+.sryffindor {
   color: #a62126;
 }
-.Hufflepuff {
+.hufflepuff {
   color: #f5af1b;
 }
-.Ravenclaff {
+.ravenclaff {
   color: #115a85;
 }
-.GryffindorBorder {
+.gryffindorBorder {
   border: solid #a62126 3px;
 }
-.HufflepuffBorder {
+.hufflepuffBorder {
   border: solid #f5af1b 3px;
 }
-.SlytherinBorder {
+.slytherinBorder {
   border: solid #065c31 3px;
 }
-.RavenclawBorder {
+.ravenclawBorder {
   border: solid #115a85 3px;
 }
-.GryffindorBG {
+.gryffindorBG {
   background-color: #e9c7c8;
 }
-.SlytherinBG {
+.slytherinBG {
   background-color: #acc9bb;
 }
-.HufflepuffBG {
+.hufflepuffBG {
   background-color: #fbe1aa;
 }
-.RavenclawBG {
+.ravenclawBG {
   background-color: #b0c8d7;
 }
 .hidden {
