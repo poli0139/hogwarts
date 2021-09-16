@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <h1>Hogwarts student list</h1>
+    </header>
+    <main>
+      <section id="overview" class="directionRow">
+        <h3 id="allStudentsNum">All students:<span>46</span></h3>
+        <h3 id="expelledStudentsNum">Expelled:<span>8</span></h3>
+      </section>
+      <section id="mainDisplay"class="directionRow">
+        <section id="houses">
+          <div id="searchField"><input type="search" id="search" name="search" /><img src="assets/icons/search.svg"></div>
+          <h3 class="Gryffindor houseNumber"><span>12</span> Gryffindor</h3>
+          <h3 class="Hufflepuff houseNumber"><span>12</span> Hufflepuff</h3>
+          <h3 class="Ravenclaff houseNumber"><span>12</span> Ravenclaff</h3>
+          <h3 class="Slytherin houseNumber"><span>12</span> Slytherin</h3>
+        </section>
+        <section id="list">
+          <div id="buttons" class="directionRow">
+           <div id="filterContainer" class=" buttonContainer directionRow"><img class="buttonIcon" src="assets/icons/filter.svg" alt=""><button id="filter">Filter</button></div>
+           <div id="sortContainer" class=" buttonContainer directionRow"><img class="buttonIcon" src="assets/icons/sort.svg" alt=""><button id="sort">Sort</button></div>
+            <p><span>25</span>Results found</p>
+          </div>
+          <ul>
+          <div class="studentCard directionRow GryffindorBorder">
+            <img class="studentImgCard " src="assets/images/abbott_h.png" alt="" />
+            <div>
+              <h3 class="name">Name</h3>
+              <h3 class="lastName">Last name</h3>
+            </div>
+            <div class="houseNameAndImg">
+              <h3 class="house-name">Gryffindor</h3>
+              <img class="houseImgCard" src="assets/houses/gryffindor.png" alt="" />
+            </div>
+          </div>
+          <div class="studentCard directionRow HufflepuffBorder">
+            <img class="studentImgCard" src="assets/images/abbott_h.png" alt="" />
+            <div>
+              <h3 class="name">Name</h3>
+              <h3 class="lastName">Last name</h3>
+            </div>
+            <div class="houseNameAndImg">
+              <h3 class="house-name">Gryffindor</h3>
+              <img class="houseImgCard" src="assets/houses/gryffindor.png" alt="" />
+            </div>
+          </div> <div class="studentCard directionRow SlytherinBorder">
+            <img class="studentImgCard" src="assets/images/abbott_h.png" alt="" />
+            <div>
+              <h3 class="name">Name</h3>
+              <h3 class="lastName">Last name</h3>
+            </div>
+            <div class="houseNameAndImg">
+              <h3 class="house-name">Gryffindor</h3>
+              <img class="houseImgCard" src="assets/houses/gryffindor.png" alt="" />
+            </div>
+          </div> <div class="studentCard directionRow RavenclawBorder">
+            <img class="studentImgCard" src="assets/images/abbott_h.png" alt="" />
+            <div>
+              <h3 class="name">Name</h3>
+              <h3 class="lastName">Last name</h3>
+            </div>
+            <div class="houseNameAndImg">
+              <h3 class="house-name">Gryffindor</h3>
+              <img class="houseImgCard" src="assets/houses/gryffindor.png" alt="" />
+            </div>
+          </div>
+        </ul></section>
+          <section id="popUp">
+            <article class="hidden">
+              <div id="mainInfo" class="directionRow">
+                <img id="studentImgPopUp" src="assets/images/abbott_h.png" alt="" />
+                <div id="names">
+                  <h2 id="firstName">First name</h2>
+                  <h2 id="middleName">Middle name</h2>
+                  <h2 id="nickname">Nickname</h2>
+                  <h2 id="lastName">Last name</h2>
+                  <h3 id="bloodStatus">bloodStatus</h3>
+                </div>
+              </div>
+              <div id="housePopUp" class="directionRow">
+                <img src="assets/houses/gryffindor.png" alt="" />
+                <h2>Gryffindor</h2>
+              </div>
+              <div id="status" class="directionRow">
+                <img id="star" src="assets/icons/star.svg" alt="">
+                <h3 id="expelledOrNot">Not expelled</h3>
+                <h3 id="club" class="directionRow"><span id="clubIcon"></span>Club name</h3>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <footer></footer>
+      </section>
+    </main>
+
+    <script src="hogwarts.js"></script>
+  </body>
+</html>

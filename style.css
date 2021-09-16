@@ -1,0 +1,201 @@
+@font-face {
+  font-family: "Harry P";
+  src: url("assets/HarryP.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+html,
+button,
+input {
+  font-family: "Harry P";
+  letter-spacing: 5px;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+button {
+  font-weight: bolder;
+  font-size: large;
+}
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #fdfdfd;
+}
+header {
+  text-align: center;
+}
+/* GENERAL CLASSES */
+.directionRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.Slytherin {
+  color: #065c31;
+}
+.Gryffindor {
+  color: #a62126;
+}
+.Hufflepuff {
+  color: #f5af1b;
+}
+.Ravenclaff {
+  color: #115a85;
+}
+.GryffindorBorder {
+  border: solid #a62126 3px;
+}
+.HufflepuffBorder {
+  border: solid #f5af1b 3px;
+}
+.SlytherinBorder {
+  border: solid #065c31 3px;
+}
+.RavenclawBorder {
+  border: solid #115a85 3px;
+}
+.GryffindorBG {
+  background-color: #e9c7c8;
+}
+.SlytherinBG {
+  background-color: #acc9bb;
+}
+.HufflepuffBG {
+  background-color: #fbe1aa;
+}
+.RavenclawBG {
+  background-color: #b0c8d7;
+}
+.hidden {
+  display: none;
+}
+
+/* MAINDISPLAY SECTION STYLE */
+#mainDisplay {
+  padding: 0 2rem;
+  justify-content: space-between;
+}
+/* SECTION HOUSES STYLE */
+#houses {
+  width: 20vw;
+}
+
+#searchField img {
+  vertical-align: bottom;
+}
+#searchField input {
+  height: 5vh;
+}
+.houseNumber {
+  margin: 2rem 0;
+}
+.houseNumber span {
+  padding: 0.5rem;
+  border: solid black 1px;
+  border-radius: 5px;
+}
+#list,
+#popUp {
+  width: 33vw;
+}
+/* OVERVIEW STYLE */
+#overview {
+  width: 40vw;
+  margin-bottom: 3rem;
+}
+#overview h3 {
+  margin: auto;
+}
+
+/* LIST SECTION STYLE */
+#buttons {
+  justify-content: space-evenly;
+}
+#buttons p {
+  font-size: larger;
+  font-weight: bolder;
+  margin: 0;
+}
+#buttons h3 span {
+  margin-right: 0.5rem;
+}
+.buttonContainer {
+  height: fit-content;
+  width: 30%;
+}
+.buttonContainer button {
+  border: none;
+  background: none;
+}
+.buttonIcon {
+  max-width: 15%;
+  height: min-content;
+  margin-right: 0.5rem;
+}
+#list ul {
+  padding: 0;
+}
+.studentCard {
+  margin: 2rem 0;
+  padding: 0.5rem;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+.studentImgCard {
+  width: 30%;
+  height: auto;
+}
+.studentCard div {
+  width: 30%;
+}
+
+.houseImgCard {
+  max-width: 40%;
+}
+.houseNameAndImg {
+  padding-left: 2rem;
+}
+
+/* POPUP STYLE */
+
+#popUp article {
+  border-radius: 15px;
+  padding: 1rem 2rem;
+  position: fixed;
+  margin-right: 3rem;
+}
+#mainInfo,
+#status {
+  justify-content: space-between;
+}
+#studentImgPopUp {
+  width: 40%;
+  height: fit-content;
+}
+#names h2 {
+  /* border: solid blue 1px; */
+  margin: 0.5rem 0;
+}
+#housePopUp img {
+  max-width: 25%;
+}
+#housePopUp {
+  align-items: center;
+  column-gap: 1rem;
+}
+#status {
+  margin-top: 2rem;
+}
+/* #status div {
+  width: auto;
+} */
+#star {
+  max-width: 15%;
+}
