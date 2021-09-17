@@ -23,6 +23,9 @@ button {
   font-weight: bolder;
   font-size: large;
 }
+button:hover {
+  text-decoration-line: underline;
+}
 body {
   padding: 0;
   margin: 0;
@@ -40,7 +43,7 @@ header {
 .slytherin {
   color: #065c31;
 }
-.sryffindor {
+.gryffindor {
   color: #a62126;
 }
 .hufflepuff {
@@ -98,8 +101,6 @@ header {
 }
 .houseNumber span {
   padding: 0.5rem;
-  border: solid black 1px;
-  border-radius: 5px;
 }
 #list,
 #popUp {
@@ -130,6 +131,9 @@ header {
   height: fit-content;
   width: 30%;
 }
+#expellContainer {
+  margin: 0 auto 2rem auto;
+}
 .buttonContainer button {
   border: none;
   background: none;
@@ -139,11 +143,12 @@ header {
   height: min-content;
   margin-right: 0.5rem;
 }
+
 #list ul {
   padding: 0;
 }
 .studentCard {
-  margin: 2rem 0;
+  margin: 2rem 0 0 0;
   padding: 0.5rem;
   border-radius: 10px;
   justify-content: space-between;

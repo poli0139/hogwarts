@@ -83,10 +83,10 @@ function prepareObjects(jsonData) {
     let house = (student.house = elem.house.trim().toLowerCase());
     console.log(house);
     //IMAGE
-    let image = `${student.lastName.toLowerCase()}_${student.firstName
+    student.image = `${student.lastName.toLowerCase()}_${student.firstName
       .substring(0, 1)
       .toLowerCase()}.png`;
-    console.log(image);
+    console.log(student.image);
     allStudents.push(student);
   });
   displayList();
@@ -108,10 +108,25 @@ function displayStudent(student) {
   clone.querySelector(".name").textContent = student.firstName;
   clone.querySelector(".lastName").textContent = student.lastName;
   clone.querySelector(".house-name").textContent = student.house;
-  clone.querySelector(".studentImgCard").src = `assets/images/${student.image}`;
   clone.querySelector(
     ".houseImgCard"
   ).src = `assets/houses/${student.house}.png`;
+  if (student.lastName.includes("-")) {
+    clone.querySelector(
+      ".studentImgCard"
+    ).src = `assets/images/${student.lastName.substring(
+      student.lastName.indexOf("-") + 1
+    )}_${student.firstName[0]}.png`;
+  } else if (student.lastName.includes("Patil")) {
+    clone.querySelector(
+      ".studentImgCard"
+    ).src = `assets/images/${student.lastName}_${student.firstName}.png`;
+  } else {
+    clone.querySelector(
+      ".studentImgCard"
+    ).src = `assets/images/${student.image}`;
+  }
+
   clone.querySelector(".studentCard").classList.add(`${student.house}Border`);
   // append clone to list
   document.querySelector("#list ul").appendChild(clone);
