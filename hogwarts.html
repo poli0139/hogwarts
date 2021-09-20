@@ -28,7 +28,7 @@
           <div id="buttons" class="directionRow">
             <div class="drp-block">
            <div id="filterContainer" class=" buttonContainer directionRow"><img class="buttonIcon" src="assets/icons/filter.svg" alt=""><button id="filter">Filter</button></div>
-              <div class="drp-content">
+              <div class="drp-content directionColumn hidden">
                   <button class="filter" data-action="filter" data-filter="gryffindor">
                     Gryffindor
                   </button><button class="filter" data-action="filter" data-filter="hufflepuff">
@@ -41,8 +41,18 @@
               </div>
 
            </div>
+           <div class="drp-block">
            <div id="sortContainer" class=" buttonContainer directionRow"><img class="buttonIcon" src="assets/icons/sort.svg" alt=""><button id="sort">Sort</button></div>
-            <p><span>25</span>Results found</p>
+           <div class="drp-content directionColumn hidden">
+            <button class="sort" data-action="sort" data-sort="firstName" data-sort-direction="asc" >
+              First Name
+            </button><button class="sort" data-action="sort" data-sort="lastName" data-sort-direction="asc" >
+              Last Name
+            </button>
+            <button class="sort" data-action="sort" data-sort="house"  data-sort-direction="asc">
+              House  </button>
+           </div>
+           <p><span>25</span>Results found</p>
           </div>
           <ul>
         </ul></section>

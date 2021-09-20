@@ -40,6 +40,10 @@ header {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.directionColumn {
+  display: flex;
+  flex-direction: column;
+}
 .slytherin {
   color: #065c31;
 }
@@ -207,8 +211,6 @@ button {
 
 /* DROPDOWN */
 .drp-content {
-  display: flex;
-  flex-direction: column;
   position: absolute;
   z-index: 1;
   background-color: white;

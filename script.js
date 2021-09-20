@@ -101,8 +101,6 @@ function prepareObjects(jsonData) {
   displayList();
 }
 
-function sortList() {}
-
 function displayList() {
   // clear the list
   document.querySelector("#list tbody").innerHTML = "";

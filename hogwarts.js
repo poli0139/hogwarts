@@ -13,7 +13,11 @@ function registerButtons() {
   document
     .querySelectorAll("[data-action = 'filter']")
     .forEach((button) => button.addEventListener("click", selectFilter));
+  document
+    .querySelectorAll("[data-action = 'sort']")
+    .forEach((button) => button.addEventListener("click", selectSort));
 }
+
 function loadJSON() {
   fetch("https://petlatkea.dk/2021/hogwarts/students.json")
     .then((response) => response.json())
@@ -96,6 +100,45 @@ function prepareObjects(jsonData) {
   });
   displayList(allStudents);
 }
+function selectSort(event) {
+  const sortBy = event.target.dataset.sort;
+  console.log(`user selected ${sortBy}`);
+  sortList(sortBy);
+}
+function sortList(sortBy) {
+  let sortedList = allStudents;
+  if (sortBy === "firstName") {
+    sortedList = sortedList.sort(sortByFirstName);
+  } else if (sortBy === "lastName") {
+    sortedList = sortedList.sort(sortByLastName);
+  } else if (sortBy === "house") {
+    sortedList = sortedList.sort(sortByHouse);
+  }
+
+  displayList(sortedList);
+}
+
+function sortByFirstName(studentA, studentB) {
+  if (studentA.firstName < studentB.firstName) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+function sortByLastName(studentA, studentB) {
+  if (studentA.lastName < studentB.lastName) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+function sortByHouse(studentA, studentB) {
+  if (studentA.house < studentB.house) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
 
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
@@ -103,18 +146,18 @@ function selectFilter(event) {
   filterList(filter);
 }
 
-function filterList(studentHouse) {
+function filterList(filterBy) {
   let filteredList = allStudents;
 
-  if (studentHouse === "gryffindor") {
+  if (filterBy === "gryffindor") {
     //create a filtered list of only gryffindor
-    filteredList = allStudents.filter(isGryffindor);
+    filterBy = allStudents.filter(isGryffindor);
   } else if (studentHouse === "hufflepuff") {
-    filteredList = allStudents.filter(isHufflepuff);
+    filterBy = allStudents.filter(isHufflepuff);
   } else if (studentHouse === "ravenclaw") {
-    filteredList = allStudents.filter(isRavenclaw);
+    filterBy = allStudents.filter(isRavenclaw);
   } else if (studentHouse === "slytherin") {
-    filteredList = allStudents.filter(isSlytherin);
+    filterBy = allStudents.filter(isSlytherin);
   }
 
   displayList(filteredList);
