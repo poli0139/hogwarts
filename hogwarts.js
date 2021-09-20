@@ -3,6 +3,13 @@ window.addEventListener("DOMContentLoaded", start);
 
 const allStudents = [];
 
+const settings = {
+  filter: "all",
+  sortBy: "name",
+  sortDir: "asc",
+};
+let filterBy = "all";
+
 function start() {
   console.log("ready");
 
@@ -111,64 +118,80 @@ function selectSort(event) {
   }
 
   console.log(`user selected ${sortBy} - ${sortDir}`);
-  sortList(sortBy, sortDir);
+  setSort(sortBy, sortDir);
 }
-function sortList(sortBy, sortDir) {
-  let sortedList = allStudents;
+function setSort(sortBy, sortDir) {
+  settings.sortBy = sortBy;
+  settings.sortDir = sortDir;
+  buildList();
+}
+function sortList(sortedList) {
+  // let sortedList = allStudents;
   // if (sortBy === "firstName") {}
   let direction = 1;
-  if (sortDir == "desc") {
+  if (settings.sortDir == "desc") {
     direction = -1;
   }
   sortedList = sortedList.sort(sortByProperty);
 
   function sortByProperty(studentA, studentB) {
-    if (studentA[sortBy] < studentB[sortBy]) {
+    if (studentA[settings.sortBy] < studentB[settings.sortBy]) {
       return -1 * direction;
     } else {
       return 1 * direction;
     }
   }
 
+  return sortedList;
+}
+
+function buildList() {
+  const currentList = filterList();
+  const sortedList = sortList(currentList);
   displayList(sortedList);
 }
 
-function sortByLastName(studentA, studentB) {
-  if (studentA.lastName < studentB.lastName) {
-    return -1;
-  } else {
-    return 1;
-  }
-}
-function sortByHouse(studentA, studentB) {
-  if (studentA.house < studentB.house) {
-    return -1;
-  } else {
-    return 1;
-  }
-}
+// function sortByLastName(studentA, studentB) {
+//   if (studentA.lastName < studentB.lastName) {
+//     return -1;
+//   } else {
+//     return 1;
+//   }
+// }
+// function sortByHouse(studentA, studentB) {
+//   if (studentA.house < studentB.house) {
+//     return -1;
+//   } else {
+//     return 1;
+//   }
+// }
 
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`user selected ${filter}`);
-  filterList(filter);
+  // filterList(filter);
+  setFilter(filter);
+}
+function setFilter(filter) {
+  settings.filterBy = filter;
+  buildList();
 }
 
-function filterList(filterBy) {
-  let filteredList = allStudents;
+function filterList(filteredList) {
+  // let filteredList = allStudents;
 
-  if (filterBy === "gryffindor") {
+  if (settings.filterBy === "gryffindor") {
     //create a filtered list of only gryffindor
     filteredList = allStudents.filter(isGryffindor);
-  } else if (filterBy === "hufflepuff") {
+  } else if (settings.filterBy === "hufflepuff") {
     filteredList = allStudents.filter(isHufflepuff);
-  } else if (filterBy === "ravenclaw") {
+  } else if (settings.filterBy === "ravenclaw") {
     filteredList = allStudents.filter(isRavenclaw);
-  } else if (filterBy === "slytherin") {
+  } else if (settings.filterBy === "slytherin") {
     filteredList = allStudents.filter(isSlytherin);
   }
 
-  displayList(filteredList);
+  return filteredList;
 }
 
 function isGryffindor(student) {
