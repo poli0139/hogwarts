@@ -102,29 +102,37 @@ function prepareObjects(jsonData) {
 }
 function selectSort(event) {
   const sortBy = event.target.dataset.sort;
-  console.log(`user selected ${sortBy}`);
-  sortList(sortBy);
+  const sortDir = event.target.dataset.sortDirection;
+  //TOGGLE THE DIRECTION
+  if (sortDir === "asc") {
+    event.target.dataset.sortDirection = "desc";
+  } else {
+    event.target.dataset.sortDirection = "asc";
+  }
+
+  console.log(`user selected ${sortBy} - ${sortDir}`);
+  sortList(sortBy, sortDir);
 }
-function sortList(sortBy) {
+function sortList(sortBy, sortDir) {
   let sortedList = allStudents;
-  if (sortBy === "firstName") {
-    sortedList = sortedList.sort(sortByFirstName);
-  } else if (sortBy === "lastName") {
-    sortedList = sortedList.sort(sortByLastName);
-  } else if (sortBy === "house") {
-    sortedList = sortedList.sort(sortByHouse);
+  // if (sortBy === "firstName") {}
+  let direction = 1;
+  if (sortDir == "desc") {
+    direction = -1;
+  }
+  sortedList = sortedList.sort(sortByProperty);
+
+  function sortByProperty(studentA, studentB) {
+    if (studentA[sortBy] < studentB[sortBy]) {
+      return -1 * direction;
+    } else {
+      return 1 * direction;
+    }
   }
 
   displayList(sortedList);
 }
 
-function sortByFirstName(studentA, studentB) {
-  if (studentA.firstName < studentB.firstName) {
-    return -1;
-  } else {
-    return 1;
-  }
-}
 function sortByLastName(studentA, studentB) {
   if (studentA.lastName < studentB.lastName) {
     return -1;
@@ -151,13 +159,13 @@ function filterList(filterBy) {
 
   if (filterBy === "gryffindor") {
     //create a filtered list of only gryffindor
-    filterBy = allStudents.filter(isGryffindor);
-  } else if (studentHouse === "hufflepuff") {
-    filterBy = allStudents.filter(isHufflepuff);
-  } else if (studentHouse === "ravenclaw") {
-    filterBy = allStudents.filter(isRavenclaw);
-  } else if (studentHouse === "slytherin") {
-    filterBy = allStudents.filter(isSlytherin);
+    filteredList = allStudents.filter(isGryffindor);
+  } else if (filterBy === "hufflepuff") {
+    filteredList = allStudents.filter(isHufflepuff);
+  } else if (filterBy === "ravenclaw") {
+    filteredList = allStudents.filter(isRavenclaw);
+  } else if (filterBy === "slytherin") {
+    filteredList = allStudents.filter(isSlytherin);
   }
 
   displayList(filteredList);
@@ -197,6 +205,7 @@ function displayList(students) {
   // build a new list
   students.forEach(displayStudent);
   //   console.log(allStudents);
+  document.querySelector("#resultsFound span").textContent = students.length;
 }
 function displayStudent(student) {
   // create clone
