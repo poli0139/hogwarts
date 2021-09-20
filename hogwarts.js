@@ -7,8 +7,13 @@ function start() {
   console.log("ready");
 
   loadJSON();
+  registerButtons();
 }
-
+function registerButtons() {
+  document
+    .querySelectorAll("[data-action = 'filter']")
+    .forEach((button) => button.addEventListener("click", selectFilter));
+}
 function loadJSON() {
   fetch("https://petlatkea.dk/2021/hogwarts/students.json")
     .then((response) => response.json())
@@ -89,13 +94,65 @@ function prepareObjects(jsonData) {
     console.log(student.image);
     allStudents.push(student);
   });
-  displayList();
+  displayList(allStudents);
 }
-function displayList() {
+
+function selectFilter(event) {
+  const filter = event.target.dataset.filter;
+  console.log(`user selected ${filter}`);
+  filterList(filter);
+}
+
+function filterList(studentHouse) {
+  let filteredList = allStudents;
+
+  if (studentHouse === "gryffindor") {
+    //create a filtered list of only gryffindor
+    filteredList = allStudents.filter(isGryffindor);
+  } else if (studentHouse === "hufflepuff") {
+    filteredList = allStudents.filter(isHufflepuff);
+  } else if (studentHouse === "ravenclaw") {
+    filteredList = allStudents.filter(isRavenclaw);
+  } else if (studentHouse === "slytherin") {
+    filteredList = allStudents.filter(isSlytherin);
+  }
+
+  displayList(filteredList);
+}
+
+function isGryffindor(student) {
+  if (student.house === "gryffindor") {
+    return true;
+  } else {
+    return false;
+  }
+}
+function isHufflepuff(student) {
+  if (student.house === "hufflepuff") {
+    return true;
+  } else {
+    return false;
+  }
+}
+function isRavenclaw(student) {
+  if (student.house === "ravenclaw") {
+    return true;
+  } else {
+    return false;
+  }
+}
+function isSlytherin(student) {
+  if (student.house === "slytherin") {
+    return true;
+  } else {
+    return false;
+  }
+}
+function displayList(students) {
   // clear the list
-  //   document.querySelector("#list tbody").innerHTML = "";
+  document.querySelector("#list ul").innerHTML = "";
   // build a new list
-  allStudents.forEach(displayStudent);
+  students.forEach(displayStudent);
   //   console.log(allStudents);
 }
 function displayStudent(student) {

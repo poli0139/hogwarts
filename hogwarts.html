@@ -21,29 +21,30 @@
           <div id="searchField"><input type="search" id="search" name="search" /><img src="assets/icons/search.svg"></div>
           <h3 class="gryffindor houseNumber"><span>12</span> Gryffindor</h3>
           <h3 class="hufflepuff houseNumber"><span>12</span> Hufflepuff</h3>
-          <h3 class="ravenclaff houseNumber"><span>12</span> Ravenclaff</h3>
+          <h3 class="ravenclaw houseNumber"><span>12</span> Ravenclaw</h3>
           <h3 class="slytherin houseNumber"><span>12</span> Slytherin</h3>
         </section>
         <section id="list">
           <div id="buttons" class="directionRow">
+            <div class="drp-block">
            <div id="filterContainer" class=" buttonContainer directionRow"><img class="buttonIcon" src="assets/icons/filter.svg" alt=""><button id="filter">Filter</button></div>
+              <div class="drp-content">
+                  <button class="filter" data-action="filter" data-filter="gryffindor">
+                    Gryffindor
+                  </button><button class="filter" data-action="filter" data-filter="hufflepuff">
+                    Hufflepuff
+                  </button>
+                  <button class="filter" data-action="filter" data-filter="ravenclaw">
+                    Ravenclaw  </button>
+                  <button class="filter" data-action="filter" data-filter="slytherin">
+                    Slytherin  </button>
+              </div>
+
+           </div>
            <div id="sortContainer" class=" buttonContainer directionRow"><img class="buttonIcon" src="assets/icons/sort.svg" alt=""><button id="sort">Sort</button></div>
             <p><span>25</span>Results found</p>
           </div>
-          <ul><template id="studentCardTemplate">
-          <div class="studentCard directionRow ">
-            <img class="studentImgCard " src="" alt="" />
-            <div>
-              <h3 class="name">Name</h3>
-              <h3 class="lastName">Last name</h3>
-            </div>
-            <div class="houseNameAndImg">
-              <h3 class="house-name">Gryffindor</h3>
-              <img class="houseImgCard" src="" alt="" />
-            </div>
-          </div>             
-          <div id="expellContainer" class="buttonContainer directionRow "><img class="buttonIcon" src="assets/icons/expel.svg" alt=""><button id="expel">Expel</button></div>
-        </template>
+          <ul>
         </ul></section>
           <section id="popUp">
             <article class="gryffindorBG gryffindorBorder">
@@ -69,7 +70,20 @@
             </article>
           </section>
         </section>
-
+        <template id="studentCardTemplate">
+          <div class="studentCard directionRow ">
+            <img class="studentImgCard " src="" alt="" />
+            <div>
+              <h3 class="name">Name</h3>
+              <h3 class="lastName">Last name</h3>
+            </div>
+            <div class="houseNameAndImg">
+              <h3 class="house-name">Gryffindor</h3>
+              <img class="houseImgCard" src="" alt="" />
+            </div>
+          </div>             
+          <div id="expellContainer" class="buttonContainer directionRow "><img class="buttonIcon" src="assets/icons/expel.svg" alt=""><button id="expel">Expel</button></div>
+        </template>
         <footer></footer>
       </section>
     </main>

@@ -100,6 +100,7 @@ function prepareObjects(jsonData) {
   });
   displayList();
 }
+
 function displayList() {
   // clear the list
   document.querySelector("#list tbody").innerHTML = "";
