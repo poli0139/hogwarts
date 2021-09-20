@@ -151,21 +151,6 @@ function buildList() {
   displayList(sortedList);
 }
 
-// function sortByLastName(studentA, studentB) {
-//   if (studentA.lastName < studentB.lastName) {
-//     return -1;
-//   } else {
-//     return 1;
-//   }
-// }
-// function sortByHouse(studentA, studentB) {
-//   if (studentA.house < studentB.house) {
-//     return -1;
-//   } else {
-//     return 1;
-//   }
-// }
-
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`user selected ${filter}`);
