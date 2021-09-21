@@ -50,11 +50,14 @@
            <div class="drp-content  ">
             <button class="sort" data-action="sort" data-sort="firstName" data-sort-direction="asc" >
               First Name
-            </button><button class="sort" data-action="sort" data-sort="lastName" data-sort-direction="asc" >
+            </button>
+            <button class="sort" data-action="sort" data-sort="lastName" data-sort-direction="asc" >
               Last Name
             </button>
             <button class="sort" data-action="sort" data-sort="house"  data-sort-direction="asc">
               House  </button>
+              <button class="sort" data-action="sort" data-sort="prefect"  data-sort-direction="asc">
+                Prefects  </button>
            </div>
            
           </div>
@@ -62,9 +65,9 @@
           <ul>
         </ul></section>
           <section id="popUp">
-            <article class="gryffindorBG gryffindorBorder hidden">
+            <article class=" hidden">
               <div id="mainInfo" class="directionRow ">
-                <img id="studentImgPopUp" src="assets/images/abbott_h.png" alt="" />
+                <img id="studentImgPopUp" src="" alt="" />
                 <div id="names">
                   <h2 id="firstName">First name</h2>
                   <h2 id="middleName">Middle name</h2>
@@ -78,7 +81,7 @@
                 <h2>Gryffindor</h2>
               </div>
               <div id="status" class="directionRow">
-                <img id="star" src="assets/icons/star.svg" alt="">
+                <h3 class="star" data-field="prefect" data-prefect="false"></h3>
                 <h4  class="expelledOrNot"></h4>
                 <h4 id="club" class="directionRow"><span id="clubIcon"></span>Club name</h4>
               </div>
@@ -92,7 +95,7 @@
             <div>
               <h3 class="name">Name</h3>
               <h3 class="lastName">Last name</h3>
-              <p  class="expelledOrNot"></p>
+              <h3 class="star" data-field="prefect" data-prefect="false"></h3>
             </div>
             <div class="houseNameAndImg">
               <h3 class="house-name">Gryffindor</h3>

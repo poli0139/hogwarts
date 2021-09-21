@@ -205,9 +205,9 @@ button {
 /* #status div {
   width: auto;
 } */
-#star {
+/* #star {
   max-width: 15%;
-}
+} */
 #closeContainer {
   width: 30%;
   margin: 1rem auto 0 auto;
@@ -231,18 +231,13 @@ button {
 .drp-block:hover .drp-content {
   display: flex;
 }
-/* EXPELLING */
-/* td[data-field="status"]::before {
-  content: "Not expelled ";
+/* STAR */
+[data-field="prefect"]::after {
+  content: "⭐";
 }
-
-td[data-field="status"][data-status="true"]::before {
-  content: "Expelled ";
-} */
-/* p[data-field="status"]::before {
-  content: "Not expelled ";
+[data-field="prefect"][data-prefect="false"] {
+  filter: grayscale(1);
 }
-
-p[data-field="status"][data-status="true"]::before {
-  content: "Expelled ";
-} */
+.star {
+  cursor: pointer;
+}

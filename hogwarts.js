@@ -52,6 +52,7 @@ function prepareObjects(jsonData) {
       image: "",
       house: "",
       status: "Not expelled",
+      prefect: false,
     };
     const student = Object.create(Student);
     //FULL NAME
@@ -278,6 +279,22 @@ function displayStudent(student) {
     console.log("expelled students", expelledStudents);
     buildList();
   }
+  // PREFECTS
+
+  clone.querySelector("[data-field=prefect]").dataset.prefect = student.prefect;
+  clone
+    .querySelector("[data-field=prefect]")
+    .addEventListener("click", clickPrefect);
+
+  function clickPrefect() {
+    if (student.prefect === true) {
+      student.prefect = false;
+    } else {
+      tryToMakeAPrefect(student);
+      // student.prefect = true;
+    }
+    buildList();
+  }
   //POPUP
 
   function showPopUp() {
@@ -307,4 +324,50 @@ function displayStudent(student) {
 }
 function closePopUp() {
   popUp.classList.add("hidden");
+}
+function tryToMakeAPrefect(selectedStudent) {
+  const prefects = allStudents.filter((student) => student.prefect);
+  const numberOfPrefects = prefects.length;
+  const other = prefects
+    .filter((student) => student.house === selectedStudent.house)
+    .shift();
+
+  //FI THERE IS ANOTHER OF THE SAME TYPE
+  if (other !== undefined) {
+    console.log("there can be only one prefect of each house");
+    removeOther(other);
+  } else if (numberOfPrefects >= 2) {
+    console.log("there can only be two prefects");
+    removeAorB(prefects[0], prefects[1]);
+  } else makePrefect(selectedStudent);
+
+  function removeOther(other) {
+    //ASK THE USER TO IGNORE OR REMOVE THE OTHER
+
+    //IF IGNORE DO NOTHING
+
+    //IF REMOVE OTHER:
+    removePrefect(other);
+    makePrefect(selectedStudent);
+  }
+  function removeAorB(prefectA, prefectB) {
+    //ASK THE USER TO IGNORE OR REVOME A OR B
+
+    //IF IGNORE DO NOTHING
+
+    //IF REMOVE A:
+    removePrefect(prefectA);
+    makePrefect(selectedStudent);
+    //ELSE IF REMOVE B
+    removePrefect(prefectB);
+    makePrefect(selectedStudent);
+  }
+
+  function removePrefect(prefectStudent) {
+    prefectStudent.prefect = false;
+  }
+
+  function makePrefect(student) {
+    student.prefect = true;
+  }
 }
