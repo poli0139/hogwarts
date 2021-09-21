@@ -195,8 +195,6 @@ function setSort(sortBy, sortDir) {
   buildList();
 }
 function sortList(sortedList) {
-  // let sortedList = allStudents;
-  // if (sortBy === "firstName") {}
   let direction = 1;
   if (settings.sortDir == "desc") {
     direction = -1;
