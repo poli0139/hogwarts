@@ -47,6 +47,7 @@ function prepareObjects(jsonData) {
       nickName: "",
       image: "",
       house: "",
+      expelled: false,
     };
     const student = Object.create(Student);
     //FULL NAME
