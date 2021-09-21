@@ -190,7 +190,6 @@ button {
   height: fit-content;
 }
 #names h2 {
-  /* border: solid blue 1px; */
   margin: 0.5rem 0;
 }
 #housePopUp img {
@@ -208,6 +207,10 @@ button {
 } */
 #star {
   max-width: 15%;
+}
+#closeContainer {
+  width: 30%;
+  margin: 1rem auto 0 auto;
 }
 
 /* DROPDOWN */

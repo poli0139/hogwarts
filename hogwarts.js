@@ -8,13 +8,17 @@ const settings = {
   sortBy: "name",
   sortDir: "asc",
 };
-let filterBy = "all";
+let popUp = document.querySelector("#popUp article");
 
 function start() {
   console.log("ready");
 
   loadJSON();
   registerButtons();
+}
+function displayGeneralData() {
+  document.querySelector("#allStudentsNum span").textContent =
+    allStudents.length;
 }
 function registerButtons() {
   document
@@ -105,6 +109,7 @@ function prepareObjects(jsonData) {
     console.log(student.image);
     allStudents.push(student);
   });
+  displayGeneralData();
   displayList(allStudents);
 }
 function selectSort(event) {
@@ -245,6 +250,32 @@ function displayStudent(student) {
   }
 
   clone.querySelector(".studentCard").classList.add(`${student.house}Border`);
+  clone.querySelector(".studentCard").addEventListener("click", showPopUp);
   // append clone to list
   document.querySelector("#list ul").appendChild(clone);
+
+  function showPopUp() {
+    popUp.classList.remove("hidden");
+    // console.log("popup");
+    popUp.removeAttribute("class");
+    popUp.classList.add(`${student.house}BG`);
+    popUp.classList.add(`${student.house}Border`);
+    popUp.querySelector(
+      "#studentImgPopUp"
+    ).src = `assets/images/${student.image}`;
+    popUp.querySelector("#firstName").textContent = student.firstName;
+    popUp.querySelector("#middleName").textContent = student.middleName;
+    popUp.querySelector("#nickname").textContent = student.nickName;
+    popUp.querySelector("#lastName").textContent = student.lastName;
+    popUp.querySelector(
+      "#housePopUp img"
+    ).src = `assets/houses/${student.house}.png`;
+    popUp.querySelector("#housePopUp h2").textContent = student.house;
+    popUp
+      .querySelector("#closeContainer")
+      .addEventListener("click", closePopUp);
+  }
+}
+function closePopUp() {
+  popUp.classList.add("hidden");
 }
