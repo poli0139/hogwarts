@@ -2,12 +2,14 @@
 window.addEventListener("DOMContentLoaded", start);
 
 const allStudents = [];
-
+const expelledStudents = [];
 const settings = {
-  filter: "all",
+  filterBy: "all",
   sortBy: "name",
   sortDir: "asc",
 };
+let filterBy = "all";
+
 let popUp = document.querySelector("#popUp article");
 
 function start() {
@@ -19,6 +21,8 @@ function start() {
 function displayGeneralData() {
   document.querySelector("#allStudentsNum span").textContent =
     allStudents.length;
+  document.querySelector("#expelledStudentsNum span").textContent =
+    expelledStudents.length;
 }
 function registerButtons() {
   document
@@ -47,7 +51,7 @@ function prepareObjects(jsonData) {
       nickName: "",
       image: "",
       house: "",
-      expelled: false,
+      status: "Not expelled",
     };
     const student = Object.create(Student);
     //FULL NAME
@@ -110,8 +114,67 @@ function prepareObjects(jsonData) {
     console.log(student.image);
     allStudents.push(student);
   });
-  displayGeneralData();
   displayList(allStudents);
+}
+function selectFilter(event) {
+  const filter = event.target.dataset.filter;
+  console.log(`user selected ${filter}`);
+  // filterList(filter);
+  setFilter(filter);
+}
+function setFilter(filter) {
+  settings.filterBy = filter;
+  buildList();
+}
+
+function filterList(filteredList) {
+  // let filteredList = allStudents;
+
+  if (settings.filterBy === "gryffindor") {
+    //create a filtered list of only gryffindor
+    filteredList = allStudents.filter(isGryffindor);
+  } else if (settings.filterBy === "hufflepuff") {
+    filteredList = allStudents.filter(isHufflepuff);
+  } else if (settings.filterBy === "ravenclaw") {
+    filteredList = allStudents.filter(isRavenclaw);
+  } else if (settings.filterBy === "slytherin") {
+    filteredList = allStudents.filter(isSlytherin);
+  } else if (settings.filterBy === "expelled") {
+    filteredList = expelledStudents;
+  } else if (settings.filterBy === "notExpelled") {
+    filteredList = allStudents;
+  }
+
+  return filteredList;
+}
+
+function isGryffindor(student) {
+  if (student.house === "gryffindor") {
+    return true;
+  } else {
+    return false;
+  }
+}
+function isHufflepuff(student) {
+  if (student.house === "hufflepuff") {
+    return true;
+  } else {
+    return false;
+  }
+}
+function isRavenclaw(student) {
+  if (student.house === "ravenclaw") {
+    return true;
+  } else {
+    return false;
+  }
+}
+function isSlytherin(student) {
+  if (student.house === "slytherin") {
+    return true;
+  } else {
+    return false;
+  }
 }
 function selectSort(event) {
   const sortBy = event.target.dataset.sort;
@@ -152,66 +215,9 @@ function sortList(sortedList) {
 }
 
 function buildList() {
-  const currentList = filterList();
+  const currentList = filterList(allStudents);
   const sortedList = sortList(currentList);
   displayList(sortedList);
-}
-
-function selectFilter(event) {
-  const filter = event.target.dataset.filter;
-  console.log(`user selected ${filter}`);
-  // filterList(filter);
-  setFilter(filter);
-}
-function setFilter(filter) {
-  settings.filterBy = filter;
-  buildList();
-}
-
-function filterList(filteredList) {
-  // let filteredList = allStudents;
-
-  if (settings.filterBy === "gryffindor") {
-    //create a filtered list of only gryffindor
-    filteredList = allStudents.filter(isGryffindor);
-  } else if (settings.filterBy === "hufflepuff") {
-    filteredList = allStudents.filter(isHufflepuff);
-  } else if (settings.filterBy === "ravenclaw") {
-    filteredList = allStudents.filter(isRavenclaw);
-  } else if (settings.filterBy === "slytherin") {
-    filteredList = allStudents.filter(isSlytherin);
-  }
-
-  return filteredList;
-}
-
-function isGryffindor(student) {
-  if (student.house === "gryffindor") {
-    return true;
-  } else {
-    return false;
-  }
-}
-function isHufflepuff(student) {
-  if (student.house === "hufflepuff") {
-    return true;
-  } else {
-    return false;
-  }
-}
-function isRavenclaw(student) {
-  if (student.house === "ravenclaw") {
-    return true;
-  } else {
-    return false;
-  }
-}
-function isSlytherin(student) {
-  if (student.house === "slytherin") {
-    return true;
-  } else {
-    return false;
-  }
 }
 function displayList(students) {
   // clear the list
@@ -220,13 +226,13 @@ function displayList(students) {
   students.forEach(displayStudent);
   //   console.log(allStudents);
   document.querySelector("#resultsFound span").textContent = students.length;
+  displayGeneralData();
 }
 function displayStudent(student) {
   // create clone
   const clone = document
     .querySelector("#studentCardTemplate")
     .content.cloneNode(true);
-
   // set clone data
   clone.querySelector(".name").textContent = student.firstName;
   clone.querySelector(".lastName").textContent = student.lastName;
@@ -252,8 +258,29 @@ function displayStudent(student) {
 
   clone.querySelector(".studentCard").classList.add(`${student.house}Border`);
   clone.querySelector(".studentCard").addEventListener("click", showPopUp);
-  // append clone to list
-  document.querySelector("#list ul").appendChild(clone);
+
+  //EXPELLING
+  clone
+    .querySelector("#expellContainer")
+    .addEventListener("click", expelStudent);
+
+  function expelStudent() {
+    student.status = "Expelled";
+    // console.log(student.status);
+    const indexOfcurrentStudents = allStudents.findIndex(
+      (element) => element.firstName === student.firstName
+    );
+    const arrayOfRemovedStudents = allStudents.splice(
+      indexOfcurrentStudents,
+      1
+    );
+
+    expelledStudents.push(arrayOfRemovedStudents[0]);
+    console.log("expelStudent index in array", allStudents);
+    console.log("expelled students", expelledStudents);
+    buildList();
+  }
+  //POPUP
 
   function showPopUp() {
     popUp.classList.remove("hidden");
@@ -268,6 +295,7 @@ function displayStudent(student) {
     popUp.querySelector("#middleName").textContent = student.middleName;
     popUp.querySelector("#nickname").textContent = student.nickName;
     popUp.querySelector("#lastName").textContent = student.lastName;
+    popUp.querySelector(".expelledOrNot").textContent = student.status;
     popUp.querySelector(
       "#housePopUp img"
     ).src = `assets/houses/${student.house}.png`;
@@ -276,6 +304,8 @@ function displayStudent(student) {
       .querySelector("#closeContainer")
       .addEventListener("click", closePopUp);
   }
+  // append clone to list
+  document.querySelector("#list ul").appendChild(clone);
 }
 function closePopUp() {
   popUp.classList.add("hidden");

@@ -231,3 +231,18 @@ button {
 .drp-block:hover .drp-content {
   display: flex;
 }
+/* EXPELLING */
+/* td[data-field="status"]::before {
+  content: "Not expelled ";
+}
+
+td[data-field="status"][data-status="true"]::before {
+  content: "Expelled ";
+} */
+/* p[data-field="status"]::before {
+  content: "Not expelled ";
+}
+
+p[data-field="status"][data-status="true"]::before {
+  content: "Expelled ";
+} */

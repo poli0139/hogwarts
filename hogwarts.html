@@ -38,6 +38,10 @@
                     Ravenclaw  </button>
                   <button class="filter" data-action="filter" data-filter="slytherin">
                     Slytherin  </button>
+                    <button class="filter" data-action="filter" data-filter="expelled">
+                      Expelled  </button>
+                      <button class="filter" data-action="filter" data-filter="notExpelled">
+                        Not expelled  </button>
               </div>
 
            </div>
@@ -75,8 +79,8 @@
               </div>
               <div id="status" class="directionRow">
                 <img id="star" src="assets/icons/star.svg" alt="">
-                <h3 id="expelledOrNot">Not expelled</h3>
-                <h3 id="club" class="directionRow"><span id="clubIcon"></span>Club name</h3>
+                <h4  class="expelledOrNot"></h4>
+                <h4 id="club" class="directionRow"><span id="clubIcon"></span>Club name</h4>
               </div>
               <div id="closeContainer" class=" directionRow "><img class="buttonIcon" src="assets/icons/expel.svg" alt=""><button id="expel">Close</button></div>
             </article>
@@ -88,6 +92,7 @@
             <div>
               <h3 class="name">Name</h3>
               <h3 class="lastName">Last name</h3>
+              <p  class="expelledOrNot"></p>
             </div>
             <div class="houseNameAndImg">
               <h3 class="house-name">Gryffindor</h3>
