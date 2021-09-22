@@ -18,10 +18,12 @@ function start() {
   loadJSON();
   registerButtons();
 }
+
+//CALL THIS FUNCTION IN DISPLAY LIST
 function displayGeneralData() {
   document.querySelector("#allStudentsNum span").textContent =
     allStudents.length;
-
+  //IN EACH HOUSE
   const elements = document.querySelectorAll("[data-housenum]");
   elements.forEach((e) => {
     const array = allStudents.filter((t) => {
@@ -43,21 +45,30 @@ function registerButtons() {
 }
 
 function loadJSON() {
-  fetch("https://petlatkea.dk/2021/hogwarts/students.json")
-    .then((response) => response.json())
-    .then((jsonData) => {
-      // when loaded, prepare objects
-      prepareObjects(jsonData);
-    });
+  Promise.all([
+    fetch("https://petlatkea.dk/2021/hogwarts/students.json").then((resp) =>
+      resp.json()
+    ),
+    fetch("https://petlatkea.dk/2021/hogwarts/families.json").then((resp) =>
+      resp.json()
+    ),
+  ]).then((jsonData) => {
+    prepareObjects(jsonData[0], jsonData[1]);
+    console.log(jsonData[1]);
+  });
 }
-function prepareObjects(jsonData) {
-  jsonData.forEach((elem) => {
+function prepareObjects(jsonData1, jsonData2) {
+  console.log(jsonData1);
+  console.log(jsonData2);
+
+  jsonData1.forEach((elem) => {
     // console.log(elem);
     const Student = {
       firstName: "",
       lastName: "",
       middleName: "",
       nickName: "",
+      blood: "half",
       image: "",
       house: "",
       status: "Not expelled",
@@ -113,7 +124,16 @@ function prepareObjects(jsonData) {
       student.lastName = "";
       console.log(student.lastName);
     }
-
+    //BLOOD
+    const array = Object.values(jsonData2);
+    for (let i = 0; i < 2; i++) {
+      if (array[i].includes(student.lastName)) {
+        if (i == 1) {
+          student.blood = "pure";
+        }
+      }
+    }
+    console.log(student.blood);
     //HOUSE
     let house = (student.house = elem.house.trim().toLowerCase());
     console.log(house);
@@ -153,6 +173,10 @@ function filterList(filteredList) {
     filteredList = expelledStudents;
   } else if (settings.filterBy === "notExpelled") {
     filteredList = allStudents;
+  } else if (settings.filterBy === "half") {
+    filteredList = allStudents.filter(isHalfBlood);
+  } else if (settings.filterBy === "pure") {
+    filteredList = allStudents.filter(isPureBlood);
   }
 
   return filteredList;
@@ -181,6 +205,20 @@ function isRavenclaw(student) {
 }
 function isSlytherin(student) {
   if (student.house === "slytherin") {
+    return true;
+  } else {
+    return false;
+  }
+}
+function isHalfBlood(student) {
+  if (student.blood === "half") {
+    return true;
+  } else {
+    return false;
+  }
+}
+function isPureBlood(student) {
+  if (student.blood === "pure") {
     return true;
   } else {
     return false;
@@ -319,6 +357,11 @@ function displayStudent(student) {
     popUp.querySelector("#middleName").textContent = student.middleName;
     popUp.querySelector("#nickname").textContent = student.nickName;
     popUp.querySelector("#lastName").textContent = student.lastName;
+    if (student.blood === "half") {
+      popUp.querySelector("#bloodStatus").textContent = "Half blood";
+    } else if (student.blood === "pure") {
+      popUp.querySelector("#bloodStatus").textContent = "Pure blood";
+    }
     popUp.querySelector(".expelledOrNot").textContent = student.status;
     popUp.querySelector(
       "#housePopUp img"
@@ -396,6 +439,12 @@ function tryToMakeAPrefect(selectedStudent) {
     document
       .querySelector("#removeAorB #removeB")
       .addEventListener("click", clickRemoveB);
+    //SHOW NAMES FOR BUTTONS
+    document.querySelector("#removeAorB [data-field=prefectA]").textContent =
+      prefectA.firstName;
+    document.querySelector("#removeAorB [data-field=prefectB]").textContent =
+      prefectB.firstName;
+    // console.log(prefectA.firstName, prefectB.firstName);
     //IF IGNORE DO NOTHING
     function closeDialog() {
       document.querySelector("#removeAorB").classList.remove("show");

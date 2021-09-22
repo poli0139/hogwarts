@@ -29,19 +29,14 @@
             <div class="drp-block">
            <div id="filterContainer" class=" buttonContainer directionRow"><img class="buttonIcon" src="assets/icons/filter.svg" alt=""><button id="filter">Filter</button></div>
               <div class="drp-content  ">
-                  <button class="filter" data-action="filter" data-filter="gryffindor">
-                    Gryffindor
-                  </button><button class="filter" data-action="filter" data-filter="hufflepuff">
-                    Hufflepuff
-                  </button>
-                  <button class="filter" data-action="filter" data-filter="ravenclaw">
-                    Ravenclaw  </button>
-                  <button class="filter" data-action="filter" data-filter="slytherin">
-                    Slytherin  </button>
-                    <button class="filter" data-action="filter" data-filter="expelled">
-                      Expelled  </button>
-                      <button class="filter" data-action="filter" data-filter="notExpelled">
-                        Not expelled  </button>
+                  <button class="filter" data-action="filter" data-filter="gryffindor"> Gryffindor</button>
+                  <button class="filter" data-action="filter" data-filter="hufflepuff">Hufflepuff</button>
+                  <button class="filter" data-action="filter" data-filter="ravenclaw">Ravenclaw</button>
+                  <button class="filter" data-action="filter" data-filter="slytherin">Slytherin</button>
+                  <button class="filter" data-action="filter" data-filter="expelled">Expelled</button>
+                  <button class="filter" data-action="filter" data-filter="notExpelled">Not expelled</button>
+                  <button class="filter" data-action="filter" data-filter="half">Half blood </button>
+                   <button class="filter" data-action="filter" data-filter="pure">Pure blood</button>
               </div>
 
            </div>
@@ -58,6 +53,7 @@
               House  </button>
               <button class="sort" data-action="sort" data-sort="prefect"  data-sort-direction="asc">
                 Prefects  </button>
+            
            </div>
            
           </div>
@@ -73,7 +69,7 @@
                   <h2 id="middleName">Middle name</h2>
                   <h2 id="nickname">Nickname</h2>
                   <h2 id="lastName">Last name</h2>
-                  <h3 id="bloodStatus">bloodStatus</h3>
+                  <h3 id="bloodStatus"></h3>
                 </div>
               </div>
               <div id="housePopUp" class="directionRow">
@@ -119,9 +115,9 @@
             <h1>Warning!</h1>
             <h2>There can not be more than 2 prefects
               <br>Do you want to remove one of the existing winners?
-            </h2> <div class="directionRow">
-            <button id="removeA">Remove A</button>
-           <button id="removeB">Remove B</button></div>
+            </h2> <div class="directionRow removeButtons">
+            <button id="removeA">Remove <span data-field="prefectA"></span></button>
+           <button id="removeB">Remove <span data-field="prefectB"></span></button></div>
            <div class="closeBtn"><button>Close</button></div>
           </div>
         </div>
