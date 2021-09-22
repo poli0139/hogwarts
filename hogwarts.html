@@ -19,10 +19,10 @@
       <section id="mainDisplay"class="directionRow">
         <section id="houses">
           <div id="searchField"><input type="search" id="search" name="search" /><img src="assets/icons/search.svg"></div>
-          <h3 class="gryffindor houseNumber"><span>12</span> Gryffindor</h3>
-          <h3 class="hufflepuff houseNumber"><span>12</span> Hufflepuff</h3>
-          <h3 class="ravenclaw houseNumber"><span>12</span> Ravenclaw</h3>
-          <h3 class="slytherin houseNumber"><span>12</span> Slytherin</h3>
+          <h3  class="gryffindor houseNumber"><span data-housenum="gryffindor">12</span> Gryffindor</h3>
+          <h3  class="hufflepuff houseNumber"><span data-housenum="hufflepuff">12</span> Hufflepuff</h3>
+          <h3  class="ravenclaw houseNumber"><span data-housenum="ravenclaw">12</span> Ravenclaw</h3>
+          <h3  class="slytherin houseNumber"><span data-housenum="slytherin">12</span> Slytherin</h3>
         </section>
         <section id="list">
           <div id="buttons" class="directionRow">
@@ -104,6 +104,27 @@
           </div>             
           <div id="expellContainer" class=" directionRow "><img class="buttonIcon" src="assets/icons/expel.svg" alt=""><button id="expel">Expel</button></div>
         </template>
+        <div id="removeOther" class="modal hidden">
+          <div class="dialog ">
+            <h1>Warning!</h1>
+            <h2>There can be only one prefect of each house
+              <br>Do you want to remove the other prefect?
+            </h2>
+            <button id="removeOtherBtn"> Remove the other</button>
+            <div class="closeBtn"><button>Close</button></div>
+          </div>
+        </div>
+        <div id="removeAorB" class="modal hidden">
+          <div class="dialog ">
+            <h1>Warning!</h1>
+            <h2>There can not be more than 2 prefects
+              <br>Do you want to remove one of the existing winners?
+            </h2> <div class="directionRow">
+            <button id="removeA">Remove A</button>
+           <button id="removeB">Remove B</button></div>
+           <div class="closeBtn"><button>Close</button></div>
+          </div>
+        </div>
         <footer></footer>
       </section>
     </main>

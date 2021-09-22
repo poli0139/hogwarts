@@ -241,3 +241,32 @@ button {
 .star {
   cursor: pointer;
 }
+/* WARNING */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(8, 11, 32, 0.9);
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+.dialog {
+  border: solid white 1px;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+}
+.dialog button {
+  color: white;
+  font-weight: lighter;
+  align-self: center;
+}
+.closeBtn {
+  margin-top: 1rem;
+}
+.show {
+  display: flex;
+}
