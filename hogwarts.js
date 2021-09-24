@@ -8,18 +8,7 @@ const settings = {
   sortBy: "name",
   sortDir: "asc",
 };
-// const studentMe = {
-//   firstname: "Polina",
-//   lastname: "Artamonova",
-//   middleName: "",
-//   nickname: "Poli",
-//   image: "assets/images/artamonova_p.png",
-//   house: "Gryffindor",
-//   status: false,
-//   blood: "pure",
-//   prefect: false,
-//   squad: false,
-// };
+
 const Student = {
   firstName: "",
   lastName: "",
@@ -46,10 +35,11 @@ function start() {
 
 //CALL THIS FUNCTION IN DISPLAY LIST
 function displayGeneralData() {
+  //number of all students displayed
   document.querySelector("#allStudentsNum span").textContent =
     allStudents.length;
 
-  //IN EACH HOUSE
+  //number of students in each house displayed
   const elements = document.querySelectorAll("[data-housenum]");
   elements.forEach((e) => {
     const array = allStudents.filter((t) => {
@@ -57,10 +47,12 @@ function displayGeneralData() {
     });
     e.textContent = array.length;
   });
-
+  //number of expelled students displayed
   document.querySelector("#expelledStudentsNum span").textContent =
     expelledStudents.length;
 }
+
+//REGISTER BUTTONS FUNCTION
 function registerButtons() {
   document
     .querySelectorAll("[data-action = 'filter']")
@@ -68,8 +60,10 @@ function registerButtons() {
   document
     .querySelectorAll("[data-action = 'sort']")
     .forEach((button) => button.addEventListener("click", selectSort));
+
   document.querySelector(".searchBar").addEventListener("input", searchBar);
 }
+//SEARCHING FUNCTION
 function searchBar(e) {
   const searchString = e.target.value.toLowerCase();
   const searchedStudents = allStudents.filter((student) => {
@@ -95,6 +89,8 @@ function loadJSON() {
     console.log(jsonData[1]);
   });
 }
+
+//PREPARING OBJECTS FROM BPTH DATABASES
 function prepareObjects(jsonData1, jsonData2) {
   console.log(jsonData1);
   console.log(jsonData2);
@@ -173,6 +169,8 @@ function prepareObjects(jsonData1, jsonData2) {
 
   displayList(allStudents);
 }
+//FILTERING
+
 function selectFilter(event) {
   const filter = event.target.dataset.filter;
   console.log(`user selected ${filter}`);
@@ -208,6 +206,7 @@ function filterList(filteredList) {
 
   return filteredList;
 }
+//IS FUNCTIONS
 
 function isGryffindor(student) {
   if (student.house === "gryffindor") {
@@ -251,6 +250,8 @@ function isPureBlood(student) {
     return false;
   }
 }
+
+//SORTING
 function selectSort(event) {
   const sortBy = event.target.dataset.sort;
   const sortDir = event.target.dataset.sortDirection;
@@ -292,6 +293,9 @@ function buildList() {
   const sortedList = sortList(currentList);
   displayList(sortedList);
 }
+
+//ADDING CONTENT
+
 function displayList(students) {
   // clear the list
   document.querySelector("#list ul").innerHTML = "";
@@ -335,6 +339,7 @@ function displayStudent(student) {
     .addEventListener("click", showPopUp);
 
   //EXPELLING
+
   clone
     .querySelector("#expellContainer")
     .addEventListener("click", expelStudent);
@@ -438,6 +443,7 @@ function displayStudent(student) {
 function closePopUp() {
   popUp.classList.add("hidden");
 }
+
 // PREFECTS FUNCTIONS
 
 function tryToMakeAPrefect(selectedStudent) {
@@ -548,6 +554,7 @@ function tryToMakeAPrefect(selectedStudent) {
   }
 }
 //SQAUD FUNCTIONS
+
 function cannotSquad() {
   console.log("can't squad works");
   document.querySelector("#cannotSquad").classList.remove("hidden");
