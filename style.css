@@ -172,6 +172,9 @@ button {
 .houseNameAndImg {
   padding-left: 2rem;
 }
+.seeMore {
+  margin-top: 1rem;
+}
 
 /* POPUP STYLE */
 
@@ -202,12 +205,7 @@ button {
 #status {
   margin-top: 2rem;
 }
-/* #status div {
-  width: auto;
-} */
-/* #star {
-  max-width: 15%;
-} */
+
 #closeContainer {
   width: 30%;
   margin: 1rem auto 0 auto;
@@ -241,6 +239,19 @@ button {
 .star {
   cursor: pointer;
 }
+/* SQUAD */
+[data-field="squad"]::after {
+  content: " 🍻";
+}
+[data-field="squad"][data-squad="false"]::after {
+  filter: grayscale(1);
+  cursor: pointer;
+}
+.cardStatuses {
+  display: flex;
+  flex-direction: row;
+}
+
 /* WARNING */
 .modal {
   position: fixed;
